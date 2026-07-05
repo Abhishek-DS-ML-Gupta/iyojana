@@ -17,16 +17,16 @@ export function Hero() {
       {/* Animated blobs */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 -left-32 h-[520px] w-[520px] rounded-full blur-3xl opacity-60 blob-anim"
-             style={{ background: "radial-gradient(circle, rgba(17,138,178,0.55), transparent 60%)" }} />
+          style={{ background: "radial-gradient(circle, rgba(17,138,178,0.55), transparent 60%)" }} />
         <div className="absolute top-1/3 -right-32 h-[560px] w-[560px] rounded-full blur-3xl opacity-50 blob-anim"
-             style={{ background: "radial-gradient(circle, rgba(79,195,224,0.45), transparent 60%)", animationDelay: "-6s" }} />
+          style={{ background: "radial-gradient(circle, rgba(79,195,224,0.45), transparent 60%)", animationDelay: "-6s" }} />
         <div className="absolute inset-0 opacity-[0.07]"
-             style={{
-               backgroundImage:
-                 "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-               backgroundSize: "60px 60px",
-               maskImage: "radial-gradient(ellipse at 50% 40%, black 40%, transparent 75%)",
-             }} />
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            maskImage: "radial-gradient(ellipse at 50% 40%, black 40%, transparent 75%)",
+          }} />
         <div className="noise-overlay" />
       </div>
 
@@ -38,8 +38,7 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 rounded-full glass-dark px-4 py-1.5 text-xs md:text-sm text-white/90"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#4FC3E0]" />
-              SEBI-aligned advisory · Fiduciary first
+              AMFI registered MFD & IRDAI Insurance Advisor
             </motion.div>
 
             <h1 className="mt-6 font-display text-white text-[clamp(2.6rem,6.4vw,5.5rem)] leading-[1.02] font-extrabold tracking-tight">
@@ -71,12 +70,12 @@ export function Hero() {
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <a href="#contact"
-                 className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#0F4C81] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all">
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[#0F4C81] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all">
                 Speak to an Expert
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
               <a href="#services"
-                 className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white/90 hover:bg-white/10 backdrop-blur transition-colors">
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-semibold text-white/90 hover:bg-white/10 backdrop-blur transition-colors">
                 Our Services
               </a>
             </motion.div>
@@ -85,9 +84,6 @@ export function Hero() {
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1 }}
               className="mt-10 flex flex-wrap items-center gap-6 text-white/70"
             >
-              <div className="flex items-center gap-2 text-sm"><ShieldCheck className="h-4 w-4 text-[#4FC3E0]" /> Finacial Advisory</div>
-              <div className="flex items-center gap-2 text-sm"><TrendingUp className="h-4 w-4 text-[#4FC3E0]" /> 20+ Years Experience</div>
-              <div className="flex items-center gap-2 text-sm"><Sparkles className="h-4 w-4 text-[#4FC3E0]" /> 600+ Clients</div>
             </motion.div>
           </div>
 

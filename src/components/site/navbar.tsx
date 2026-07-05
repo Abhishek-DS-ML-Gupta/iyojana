@@ -36,9 +36,6 @@ export function Navbar() {
               alt="iYojana Logo"
               className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
-            <span className="font-display font-bold text-lg tracking-tight">
-              i<span className="text-gradient">Yojana</span>
-            </span>
           </a>
 
           <ul className="hidden lg:flex items-center gap-1">

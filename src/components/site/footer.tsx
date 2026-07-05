@@ -1,3 +1,5 @@
+import LogoPng from "@/assets/logo.png";
+
 function FacebookIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -41,7 +43,7 @@ function ArrowUpIcon({ className }: { className?: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#06172B] text-white overflow-hidden">
+    <footer className="relative bg-[#092340] text-white overflow-hidden">
       <svg viewBox="0 0 1440 80" className="block w-full text-[#06172B]" preserveAspectRatio="none" aria-hidden>
         <path fill="currentColor" d="M0,32 C240,80 480,0 720,32 C960,64 1200,16 1440,48 L1440,80 L0,80 Z" />
       </svg>
@@ -50,7 +52,7 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0F4C81] to-[#118AB2] text-white font-bold text-lg shadow-lg shadow-[#0F4C81]/20">iY</span>
+              <img src={LogoPng} alt="iYojana Financials Logo" className="h-10 w-auto" />
               <span className="font-display text-3xl font-bold">i<span className="text-gradient">Yojana</span></span>
             </div>
             <p className="mt-6 max-w-md text-white/60 leading-relaxed text-lg">

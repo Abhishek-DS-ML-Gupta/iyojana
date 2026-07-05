@@ -3,11 +3,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
 
 const faqs = [
-  { q: "Are you fee-only or commission-based?", a: "Fee-only. We are compensated exclusively by our clients, never by product manufacturers. All investments are placed via direct plans." },
-  { q: "What is the minimum engagement?", a: "We work best with families that value a written plan. Retainers start at ₹36,000/year and scale with complexity, never with AUM." },
-  { q: "Can you serve NRIs?", a: "Yes. We serve NRIs across GCC, UK, US and Singapore with jurisdiction-aware planning and coordinated tax counsel." },
-  { q: "How do reviews work?", a: "Quarterly deep-dives, monthly cash-flow check-ins, and always-on email for changes. Every action is logged in your plan." },
-  { q: "What if my situation changes?", a: "Plans are living documents. Job change, new goal, illness — we re-run the model and update in one working week." },
+  {
+    q: "What financial services do you provide?",
+    a: "We offer financial planning, mutual fund investments, insurance solutions, retirement planning, tax-saving strategies, and wealth management tailored to your financial goals.",
+  },
+  {
+    q: "Can I start investing with a small amount?",
+    a: "Yes. You can begin your investment journey with SIPs starting from as little as ₹500 per month, making it easy to build wealth consistently over time.",
+  },
+  {
+    q: "How do you help me choose the right investment plan?",
+    a: "We assess your financial goals, risk appetite, investment horizon, and current financial situation to recommend personalized investment and insurance solutions.",
+  },
+  {
+    q: "How often is my portfolio reviewed?",
+    a: "We regularly review your portfolio and recommend changes whenever needed to ensure it stays aligned with your financial goals and changing market conditions.",
+  },
+  {
+    q: "How can I get started?",
+    a: "Simply book a free consultation through our website or contact us directly. We'll understand your financial objectives and create a personalized roadmap to help you achieve them.",
+  },
 ];
 
 export function FAQ() {
@@ -17,8 +32,8 @@ export function FAQ() {
       <div className="container-x grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">FAQ</span>
-          <h2 className="mt-4 font-display text-4xl md:text-5xl font-extrabold tracking-tight">
-            Straight answers <span className="text-gradient">to real questions</span>
+<h2 className="mt-4 font-display text-4xl md:text-5xl font-extrabold tracking-tight">
+            Clear answers to your investment and insurance queries
           </h2>
           <p className="mt-4 text-muted-foreground max-w-md">
             Still curious? Book a free 30-minute discovery call — no obligation, no pitch.
