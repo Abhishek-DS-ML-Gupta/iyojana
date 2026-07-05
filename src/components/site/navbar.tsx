@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.png"; // Adjust the path if needed
 
 const links = [
   { href: "#services", label: "Services" },
@@ -26,15 +27,15 @@ export function Navbar() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "pt-3" : "pt-5"}`}>
       <div className="container-x">
         <nav
-          className={`flex items-center justify-between rounded-full px-4 md:px-6 py-3 transition-all duration-500 ${
-            scrolled ? "glass shadow-[0_10px_40px_-12px_rgba(15,76,129,0.18)]" : "bg-transparent"
-          }`}
+          className={`flex items-center justify-between rounded-full px-4 md:px-6 py-3 transition-all duration-500 ${scrolled ? "glass shadow-[0_10px_40px_-12px_rgba(15,76,129,0.18)]" : "bg-transparent"
+            }`}
         >
           <a href="#top" className="flex items-center gap-2 group">
-            <span className="relative inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#0F4C81] to-[#118AB2] text-white font-bold shadow-lg">
-              iY
-              <span className="absolute inset-0 rounded-xl ring-1 ring-white/30" />
-            </span>
+            <img
+              src={logo}
+              alt="iYojana Logo"
+              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
             <span className="font-display font-bold text-lg tracking-tight">
               i<span className="text-gradient">Yojana</span>
             </span>
