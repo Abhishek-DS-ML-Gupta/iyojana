@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-r
 
 export function Contact() {
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const submit = useServerFn(submitContactForm);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -13,17 +14,28 @@ export function Contact() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    const data = {
+      firstName: (formData.get("firstName") as string) || "",
+      lastName: (formData.get("lastName") as string) || "",
+      email: (formData.get("email") as string) || "",
+      phone: (formData.get("phone") as string) || "",
+      purpose: (formData.get("purpose") as string) || "",
+      message: (formData.get("message") as string) || "",
+    };
+
+    const newErrors: Record<string, string> = {};
+    if (!data.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!data.lastName.trim()) newErrors.lastName = "Last name is required";
+    if (!data.email.trim()) newErrors.email = "Email is required";
+    if (!data.phone.trim()) newErrors.phone = "Phone is required";
+    if (!data.purpose.trim()) newErrors.purpose = "Purpose is required";
+    if (!data.message.trim()) newErrors.message = "Message is required";
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+
     setState("loading");
-    const result = await submit({
-      data: {
-        firstName: (formData.get("firstName") as string) || "",
-        lastName: (formData.get("lastName") as string) || "",
-        email: (formData.get("email") as string) || "",
-        phone: (formData.get("phone") as string) || "",
-        purpose: (formData.get("purpose") as string) || "",
-        message: (formData.get("message") as string) || "",
-      },
-    });
+    const result = await submit({ data });
 
     if (result.success) {
       setState("done");
@@ -121,16 +133,16 @@ export function Contact() {
                   <h3 className="font-display text-2xl font-bold mb-6">Book Your Consultation</h3>
                   <form onSubmit={onSubmit} className="space-y-5">
                     <div className="grid gap-5 sm:grid-cols-2">
-                      <Field label="First name" name="firstName" />
-                      <Field label="Last name" name="lastName" />
-                      <Field label="Email" name="email" type="email" />
-                      <Field label="Phone" name="phone" />
+                      <Field label="First name" name="firstName" error={errors.firstName} />
+                      <Field label="Last name" name="lastName" error={errors.lastName} />
+                      <Field label="Email" name="email" type="email" error={errors.email} />
+                      <Field label="Phone" name="phone" error={errors.phone} />
                       <div className="sm:col-span-2">
-                        <Field label="Purpose" name="purpose" />
+                        <Field label="Purpose" name="purpose" error={errors.purpose} />
                       </div>
                     </div>
                     <div>
-                      <Field label="Leave us a message..." name="message" textarea />
+                      <Field label="Leave us a message..." name="message" textarea error={errors.message} />
                     </div>
                     <button
                       type="submit"
@@ -152,17 +164,20 @@ export function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", textarea }: { label: string; name: string; type?: string; textarea?: boolean }) {
+function Field({ label, name, type = "text", textarea, error }: { label: string; name: string; type?: string; textarea?: boolean; error?: string }) {
   return (
-    <label className="relative block">
-      {textarea ? (
-        <textarea name={name} rows={3} className="peer w-full bg-transparent border-b border-white/20 pt-6 pb-2 text-white outline-none focus:border-[#4FC3E0] transition-colors" />
-      ) : (
-        <input name={name} type={type} className="peer w-full bg-transparent border-b border-white/20 pt-6 pb-2 text-white outline-none focus:border-[#4FC3E0] transition-colors" />
-      )}
-      <span className="pointer-events-none absolute left-0 transition-all top-6 text-white/60 peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#4FC3E0]">
-        {label}
-      </span>
-    </label>
+    <div className="relative">
+      <label className="relative block">
+        {textarea ? (
+          <textarea name={name} rows={3} required className={`peer w-full bg-transparent border-b pt-6 pb-2 text-white outline-none transition-colors ${error ? "border-red-400" : "border-white/20 focus:border-[#4FC3E0]"}`} />
+        ) : (
+          <input name={name} type={type} required className={`peer w-full bg-transparent border-b pt-6 pb-2 text-white outline-none transition-colors ${error ? "border-red-400" : "border-white/20 focus:border-[#4FC3E0]"}`} />
+        )}
+        <span className={`pointer-events-none absolute left-0 transition-all ${error ? "text-red-400" : "top-6 text-white/60 peer-focus:top-0 peer-focus:text-xs peer-focus:text-[#4FC3E0]"}`}>
+          {label}{error && <span className="text-red-400"> *</span>}
+        </span>
+      </label>
+      {error && <p className="absolute -bottom-5 left-0 text-xs text-red-400">{error}</p>}
+    </div>
   );
 }
