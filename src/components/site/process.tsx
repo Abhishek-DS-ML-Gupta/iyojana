@@ -2,11 +2,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const steps = [
-  { n: "01", title: "Buying a House", desc: "Plan your home purchase with the right budget, corpus, and loan structure aligned to your cash flow." },
-  { n: "02", title: "Children’s Education", desc: "Build a dedicated, inflation-aware education corpus so goals stay funded regardless of market cycles." },
-  { n: "03", title: "Children’s Marriage", desc: "Structure gifts, trusts, and investments so life milestones remain joyful, not stressful." },
-  { n: "04", title: "Retirement", desc: "Design a pension, drawdown, and income plan that preserves capital and protects lifestyle." },
-  { n: "05", title: "Tax Optimization", desc: "Efficient structures and deductions that reduce leakage and keep more of what you earn." },
+  { n: "01", title: "Understanding your Goals and Risk Appetite" },
+  { n: "02", title: "Review your Existing Portfolio" },
+  { n: "03", title: "Build a Personalised Financial Plan" },
+  { n: "04", title: "Implementation of the Plan" },
+  { n: "05", title: "Monitor and Review" },
 ];
 
 export function Process() {
@@ -28,10 +28,10 @@ export function Process() {
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
             <span className="h-1.5 w-1.5 rounded-full bg-[#4FC3E0]" /> The Process
           </span>
-  <h2 className="mt-4 font-display text-4xl md:text-6xl font-extrabold tracking-tight">
-    A five-step financial plan shaped by <span className="text-gradient">15+ years of experience</span>
-  </h2>
-  <p className="mt-4 text-lg text-white/70">A rigorous, transparent method — refined over 15 years of practice.</p>
+          <h2 className="mt-4 font-display text-4xl md:text-6xl font-extrabold tracking-tight">
+            A five-step financial plan shaped by <span className="text-gradient">20+ years of experience</span>
+          </h2>
+          <p className="mt-4 text-lg text-white/70">A rigorous, transparent method — refined over 20 years of practice.</p>
         </div>
 
         <div className="relative mt-16">
@@ -69,8 +69,7 @@ export function Process() {
                   </span>
                   <span className="h-2 w-2 rounded-full bg-[#4FC3E0] shadow-[0_0_20px_#4FC3E0]" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm text-white/65 leading-relaxed">{s.desc}</p>
+                <h3 className="mt-5 font-display text-lg font-bold leading-snug">{s.title}</h3>
               </motion.li>
             ))}
           </ol>

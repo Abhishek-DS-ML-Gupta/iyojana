@@ -4,8 +4,6 @@ import { Hero } from "@/components/site/hero";
 import { LogoMarquee } from "@/components/site/logo-marquee";
 import { Services } from "@/components/site/services";
 import { Process } from "@/components/site/process";
-import { Founder } from "@/components/site/founder";
-import { Team } from "@/components/site/team";
 import { About } from "@/components/site/about";
 import { Testimonials } from "@/components/site/testimonials";
 import { FAQ } from "@/components/site/faq";
@@ -28,8 +26,6 @@ function Index() {
         <Hero />
         <Services />
         <About />
-        <Founder />
-        <Team />
         <Process />
         <Testimonials />
         <LogoMarquee />

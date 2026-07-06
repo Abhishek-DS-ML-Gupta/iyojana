@@ -1,38 +1,8 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Target, TrendingUp, Users, Heart, Award } from "lucide-react";
-
-const values = [
-  {
-    icon: Heart,
-    title: "Purpose First",
-    text: "We believe wealth is not just about numbers—it's about creating a life of security, freedom, and purpose.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Fiduciary Standard",
-    text: "Every recommendation is tailored, thoughtful, and built with a long-term perspective. No product bias, ever.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Discipline & Clarity",
-    text: "Successful wealth management isn't about chasing trends—it's about discipline, clarity, and consistency.",
-  },
-  {
-    icon: Users,
-    title: "20+ Years of Trust",
-    text: "Trusted partners to individuals and families navigating their financial journeys with simplicity and rigour.",
-  },
-  {
-    icon: Target,
-    title: "Goals Aligned",
-    text: "We understand your life goals first, then align your finances to support them—seamlessly and transparently.",
-  },
-  {
-    icon: Award,
-    title: "Confident Future",
-    text: "We don't just manage money. We help you build a future you can feel confident about.",
-  },
-];
+import { Target, Eye } from "lucide-react";
+import CountUpNS from "react-countup";
+const CountUp = CountUpNS.default;
+import { useInView } from "react-intersection-observer";
 
 export function About() {
   return (
@@ -41,48 +11,75 @@ export function About() {
            style={{ background: "radial-gradient(circle at 80% 20%, rgba(17,138,178,0.25), transparent 50%), radial-gradient(circle at 20% 80%, rgba(79,195,224,0.2), transparent 50%)" }} />
 
       <div className="container-x relative">
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-xs font-medium text-primary">
             About Us
           </span>
           <h2 className="mt-4 font-display text-4xl md:text-5xl font-extrabold tracking-tight">
-            Our Experts Are the Finest
+            Building a future you can feel <span className="text-gradient">confident about</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-            At iYojana, we don't just manage money. We help you build a future you can feel confident about.
-          </p>
         </div>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group relative overflow-hidden rounded-3xl bg-card border border-border p-8 hover:border-transparent transition-all hover:-translate-y-1"
-              style={{ boxShadow: "0 1px 0 rgba(15,76,129,0.04)" }}
-            >
-              <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
-                   style={{ padding: 1, background: "linear-gradient(135deg, #0F4C81, #118AB2, #4FC3E0)",
-                            WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                            WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0F4C81] to-[#118AB2] text-white shadow-lg shadow-[#0F4C81]/20 mb-5">
-                <v.icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-display text-xl font-bold">{v.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{v.text}</p>
-            </motion.div>
-          ))}
+        {/* Stats white band */}
+        <StatsRow />
+
+        {/* Vision & Mission */}
+        <div className="mt-16 grid gap-8 md:grid-cols-2">
+          {/* Mission */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border p-8 hover:border-transparent transition-all hover:-translate-y-1"
+            style={{ boxShadow: "0 1px 0 rgba(15,76,129,0.04)" }}
+          >
+            <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+                 style={{ padding: 1, background: "linear-gradient(135deg, #0F4C81, #118AB2, #4FC3E0)",
+                          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                          WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0F4C81] to-[#118AB2] text-white shadow-lg shadow-[#0F4C81]/20 mb-5">
+              <Target className="h-6 w-6" />
+            </div>
+            <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Our Mission</div>
+            <h3 className="font-display text-xl font-bold mb-3">Mission Statement</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Empowering investors to map, track and crack milestones through tailor made plans.
+            </p>
+          </motion.div>
+
+          {/* Vision */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="group relative overflow-hidden rounded-3xl bg-card border border-border p-8 hover:border-transparent transition-all hover:-translate-y-1"
+            style={{ boxShadow: "0 1px 0 rgba(15,76,129,0.04)" }}
+          >
+            <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+                 style={{ padding: 1, background: "linear-gradient(135deg, #0F4C81, #118AB2, #4FC3E0)",
+                          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                          WebkitMaskComposite: "xor", maskComposite: "exclude" }} />
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0F4C81] to-[#118AB2] text-white shadow-lg shadow-[#0F4C81]/20 mb-5">
+              <Eye className="h-6 w-6" />
+            </div>
+            <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Our Vision</div>
+            <h3 className="font-display text-xl font-bold mb-3">Vision Statement</h3>
+            <p className="text-muted-foreground leading-relaxed">
+              To make disciplined financial planning a way of life for every individual.
+            </p>
+          </motion.div>
         </div>
 
+        {/* Blue banner — retained at bottom */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="mt-20 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#06172B] to-[#0F4C81] p-8 md:p-12 text-white"
+          className="mt-16 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#06172B] to-[#0F4C81] p-8 md:p-12 text-white"
         >
           <div className="relative z-10 max-w-3xl">
             <h3 className="font-display text-2xl md:text-3xl font-extrabold">
@@ -96,5 +93,29 @@ export function About() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function StatsRow() {
+  const stats = [
+    { v: 600, s: "+ cr", label: "AUE" },
+    { v: 20, s: "+", label: "Years of Experience" },
+    { v: 300, s: "+", label: "Clients" },
+  ];
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 });
+  return (
+    <div ref={ref} className="mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-3 rounded-3xl border border-border bg-white overflow-hidden shadow-sm">
+        {stats.map((st, i) => (
+          <div key={i} className={`relative p-8 flex flex-col items-center justify-center text-center ${i < stats.length - 1 ? "border-b sm:border-b-0 sm:border-r border-border" : ""}`}>
+            <div className="font-display text-4xl md:text-5xl font-black text-primary">
+              {inView ? <CountUp end={st.v} duration={2} separator="," /> : 0}
+              <span>{st.s}</span>
+            </div>
+            <div className="mt-2 text-sm font-semibold text-muted-foreground uppercase tracking-wider">{st.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -4,9 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const testimonials = [
-  { name: "Ananya & Vikram S.", role: "Bengaluru · Tech leads", body: "We finally understand our money. The written plan gave us a shared language and a real path to FI by 50." },
-  { name: "Dr. Priya Nair", role: "Kochi · Physician", body: "Zero product bias. Clear fees. My insurance and MF portfolio were rebuilt from first principles — I sleep better." },
-  { name: "Rajat Bansal", role: "Delhi · Founder", body: "Quarterly reviews are the calmest hour of my quarter. iYojana treats my family's plan as seriously as my cap table." },
+  { name: "Ananya & Vikram S.", role: "Mumbai · Tech leads", body: "We finally understand our money. The written plan gave us a shared language and a real path to FI by 50." },
+  { name: "Dr. Priya Nair", role: "Mumbai · Physician", body: "Zero product bias. Clear fees. My insurance and MF portfolio were rebuilt from first principles — I sleep better." },
+  { name: "Rajat Bansal", role: "Mumbai · Founder", body: "Quarterly reviews are the calmest hour of my quarter. iYojana treats my family's plan as seriously as my cap table." },
   { name: "Meera Iyer", role: "Pune · CFO", body: "Even as a finance professional, I outsource my own planning here. Rigour, discipline, no noise." },
   { name: "Karthik R.", role: "Chennai · Consultant", body: "The retirement model showed me trade-offs I'd never considered. Decisions became obvious." },
 ];

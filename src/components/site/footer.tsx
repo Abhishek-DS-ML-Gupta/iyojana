@@ -52,8 +52,11 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <img src={LogoPng} alt="iYojana Financials Logo" className="h-10 w-auto" />
-              <span className="font-display text-3xl font-bold">i<span className="text-gradient">Yojana</span></span>
+              <img src={LogoPng} alt="i-Yojana Financials Logo" className="h-10 w-auto" />
+              <div className="flex flex-col">
+                <span className="font-display text-2xl font-bold leading-tight">i<span className="text-gradient">-Yojana</span></span>
+                <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-white/40 leading-tight">Plan / Execute / Review</span>
+              </div>
             </div>
             <p className="mt-6 max-w-md text-white/60 leading-relaxed text-lg">
               Office 11, 1st Floor, Dosti Shoppe Link, Dosti Acres, Antop Hill, Mumbai, Maharashtra 400037
@@ -76,14 +79,34 @@ export function Footer() {
             </div>
           </div>
 
-          <Col title="Services" items={["Wealth Management", "Insurance Planning", "Retirement Planning", "Estate Planning"]} />
-          <Col title="Company" items={["About", "Services", "Process", "Contact"]} />
+          <Col
+            title="Services"
+            items={[
+              { label: "Contingency Planning", href: "/#services" },
+              { label: "Insurance Planning", href: "/#services" },
+              { label: "Goal Based Investment Planning", href: "/#services" },
+              { label: "Retirement Planning", href: "/#services" },
+              { label: "Estate Planning", href: "/#services" },
+            ]}
+          />
+          <Col
+            title="Company"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "About", href: "/#about" },
+              { label: "Services", href: "/#services" },
+              { label: "Process", href: "/#process" },
+              { label: "Stories", href: "/#stories" },
+              { label: "Calculator", href: "/calculator" },
+              { label: "Contact", href: "/#contact" },
+            ]}
+          />
         </div>
 
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8">
-          <p className="text-sm text-white/40">© {new Date().getFullYear()} iYojana Financials. All rights reserved.</p>
+          <p className="text-sm text-white/40">© {new Date().getFullYear()} i-Yojana Financials. All rights reserved.</p>
           <a
-            href="#top"
+            href="/#top"
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/60 transition-all hover:-translate-y-0.5 hover:border-[#118AB2] hover:text-white"
           >
             Back to top
@@ -109,14 +132,14 @@ function SocialLink({ href, label, icon }: { href: string; label: string; icon: 
   );
 }
 
-function Col({ title, items }: { title: string; items: string[] }) {
+function Col({ title, items }: { title: string; items: { label: string; href: string }[] }) {
   return (
     <div>
       <div className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white/80">{title}</div>
       <ul className="mt-5 space-y-3 text-white/60">
         {items.map((it) => (
-          <li key={it}>
-            <a href="#" className="inline-flex text-sm transition-colors hover:text-white hover:translate-x-1">{it}</a>
+          <li key={it.label}>
+            <a href={it.href} className="inline-flex text-sm transition-colors hover:text-white hover:translate-x-1">{it.label}</a>
           </li>
         ))}
       </ul>

@@ -98,44 +98,6 @@ export function Hero() {
               <div className="absolute inset-0 rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.6)]">
                 <img src={heroImg} alt="Portfolio dashboard visualization" className="h-full w-full object-cover" />
               </div>
-
-              {/* Floating cards */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.0, duration: 0.7 }}
-                className="absolute -left-4 md:-left-10 top-8 glass-dark rounded-2xl p-4 text-white float-slow"
-              >
-                <div className="text-xs text-white/60">Portfolio IRR</div>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <div className="text-2xl font-bold">14.8%</div>
-                  <span className="text-xs text-[#4FC3E0]">+2.3%</span>
-                </div>
-                <svg viewBox="0 0 100 30" className="mt-1 h-8 w-32">
-                  <motion.path
-                    d="M0,22 L15,18 L30,20 L45,12 L60,15 L75,8 L100,4"
-                    fill="none" stroke="#4FC3E0" strokeWidth="2"
-                    initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.6, delay: 1.2 }}
-                  />
-                </svg>
-              </motion.div>
-
-              <motion.div
-                initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 1.15, duration: 0.7 }}
-                className="absolute -right-3 md:-right-8 bottom-6 glass-dark rounded-2xl p-4 text-white float-slow"
-                style={{ animationDelay: "-3s" }}
-              >
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-[#0F4C81] to-[#118AB2]">
-                    <ShieldCheck className="h-4 w-4" />
-                  </span>
-                  <div>
-                    <div className="text-xs text-white/60">Retirement Plan</div>
-                    <div className="text-sm font-semibold">On Track · 92%</div>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
