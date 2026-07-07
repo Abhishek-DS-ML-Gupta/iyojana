@@ -69,9 +69,9 @@ export function Navbar() {
       />
       <div className="flex flex-col">
         <span className="font-display font-bold text-lg tracking-tight leading-tight">
-          i<span className="text-gradient">-Yojana</span>
+          <span className="text-gradient">i</span><span className="text-gradient">-Yojana</span>
         </span>
-        <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-foreground/55 leading-tight">
+        <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-gradient leading-tight">
           Plan / Execute / Review
         </span>
       </div>

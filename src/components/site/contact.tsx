@@ -59,7 +59,7 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="flex flex-col-reverse lg:grid gap-8 lg:grid-cols-2">
           <div className="space-y-8">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
               <h3 className="font-display text-xl font-bold mb-6">Get in Touch</h3>

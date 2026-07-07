@@ -54,8 +54,8 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <img src={LogoPng} alt="i-Yojana Financials Logo" className="h-10 w-auto" />
               <div className="flex flex-col">
-                <span className="font-display text-2xl font-bold leading-tight">i<span className="text-gradient">-Yojana</span></span>
-                <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-white/40 leading-tight">Plan / Execute / Review</span>
+                <span className="font-display text-2xl font-bold leading-tight text-gradient">i<span className="text-gradient">-Yojana</span></span>
+                <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-gradient leading-tight">Plan / Execute / Review</span>
               </div>
             </div>
             <p className="mt-6 max-w-md text-white/60 leading-relaxed text-lg">

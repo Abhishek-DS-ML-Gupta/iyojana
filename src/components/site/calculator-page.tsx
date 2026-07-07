@@ -582,6 +582,20 @@ export function CalculatorPage() {
             >
               SIP · Lumpsum · SWP · Goal — four calculators, one place. Projections are illustrative.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="mt-8 flex justify-center"
+            >
+              <a
+                href="/#contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#0F4C81] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all"
+              >
+                Book a Demo
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </motion.div>
           </div>
         </div>
 
@@ -634,10 +648,10 @@ export function CalculatorPage() {
           <div className="mt-10 flex justify-center">
             <a
               href="/#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0F4C81] to-[#118AB2] px-8 py-4 text-sm font-semibold text-white shadow-[0_16px_40px_-12px_rgba(15,76,129,0.6)] hover:shadow-[0_20px_50px_-12px_rgba(15,76,129,0.7)] hover:-translate-y-0.5 transition-all"
+              className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0F4C81] to-[#118AB2] px-8 py-4 text-sm font-semibold text-white shadow-[0_16px_40px_-12px_rgba(15,76,129,0.6)] hover:shadow-[0_20px_50px_-12px_rgba(15,76,129,0.7)] hover:-translate-y-0.5 transition-all"
             >
-              Book a Free Consultation
-              <ArrowRight className="h-4 w-4" />
+              Book a Demo
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </div>
