@@ -16,7 +16,7 @@ const products = [
   { icon: TrendingUp, title: "Mutual Funds", desc: "Diversified equity, debt and hybrid funds for every risk appetite and time horizon." },
   { icon: BarChart3, title: "Portfolio Management Services (PMS)", desc: "Professionally managed, customised equity portfolios for high-net-worth investors." },
   { icon: LineChart, title: "Alternative Investment Fund (AIF)", desc: "Access to curated alternative strategies — private equity, real assets and more." },
-  { icon: BookOpen, title: "Systematic Investment Fund (SIF)", desc: "Disciplined, systematic investment strategies designed for long-term wealth creation." },
+  { icon: BookOpen, title: "Specialised Investment Fund (SIF)", desc: "Disciplined, specialised investment strategies designed for long-term wealth creation." },
   { icon: Building2, title: "Insurance", desc: "Comprehensive insurance products spanning life, health and general insurance." },
   { icon: FileText, title: "Bonds", desc: "Fixed income and government bonds to stabilise your portfolio and generate predictable returns." },
 ];

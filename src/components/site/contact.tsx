@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-r
 export function Contact() {
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [responseMessage, setResponseMessage] = useState<string | null>(null);
   const submit = useServerFn(submitContactForm);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -35,19 +36,23 @@ export function Contact() {
     if (Object.keys(newErrors).length > 0) return;
 
     setState("loading");
+    setResponseMessage(null);
+
     const result = await submit({ data });
 
     if (result.success) {
       setState("done");
+      setResponseMessage(result.message ?? 'We received your message.');
     } else {
       setState("idle");
+      setResponseMessage(result.message ?? 'Something went wrong.');
     }
   }
 
   return (
     <section id="contact" className="relative py-24 md:py-32 bg-aurora text-white overflow-hidden">
       <div aria-hidden className="absolute inset-0 opacity-40 blob-anim"
-           style={{ background: "radial-gradient(50% 40% at 80% 20%, rgba(79,195,224,0.5), transparent 60%)" }} />
+        style={{ background: "radial-gradient(50% 40% at 80% 20%, rgba(79,195,224,0.5), transparent 60%)" }} />
       <div className="container-x relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium">Contact</span>
@@ -117,7 +122,7 @@ export function Contact() {
             <AnimatePresence mode="wait">
               {state === "done" ? (
                 <motion.div key="done" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-                            className="flex flex-col items-center py-16 text-center h-full">
+                  className="flex flex-col items-center py-16 text-center h-full">
                   <motion.span
                     initial={{ scale: 0 }} animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 220, damping: 14 }}
@@ -152,6 +157,11 @@ export function Contact() {
                       {state === "loading" ? (<><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>) :
                         (<>Book my discovery call <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></>)}
                     </button>
+                    {responseMessage ? (
+                      <p className={`mt-3 text-sm ${state === 'done' ? 'text-emerald-200' : 'text-red-200'}`}>
+                        {responseMessage}
+                      </p>
+                    ) : null}
                     <p className="text-xs text-white/50">We reply within 1 business day. Your details stay confidential.</p>
                   </form>
                 </motion.div>

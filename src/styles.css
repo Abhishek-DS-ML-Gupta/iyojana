@@ -165,7 +165,7 @@
   to   { transform: translateX(-50%); }
 }
 @utility marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 20s linear infinite;
 }
 
 @keyframes float-slow {

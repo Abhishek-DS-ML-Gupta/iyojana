@@ -2,46 +2,26 @@ import { createServerFn } from '@tanstack/react-start';
 import nodemailer, { type Transport } from 'nodemailer';
 
 let transporter: Transport | undefined;
-let etherealUrl: string | undefined;
 
 async function getTransporter() {
   if (transporter) return transporter;
 
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-    transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-    return transporter;
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    throw new Error(
+      'SMTP configuration is missing. Please set SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables.'
+    );
   }
 
-  const testAccount = await nodemailer.createTestAccount();
   transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
     secure: false,
     auth: {
-      user: testAccount.user,
-      pass: testAccount.pass,
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
     },
   });
 
-  const url = nodemailer.getTestMessageUrl(
-    await transporter.sendMail({
-      from: testAccount.user,
-      to: testAccount.user,
-      subject: 'Ethereal test',
-      text: '',
-      html: '',
-    }),
-  );
-
-  etherealUrl = url ?? undefined;
   return transporter;
 }
 
@@ -66,12 +46,10 @@ export const submitContactForm = createServerFn({ method: 'POST' })
     try {
       const transport = await getTransporter();
       const from = process.env.SMTP_FROM || process.env.SMTP_USER || 'iYojana <no-reply@iyojana.com>';
+      const notificationRecipients = [process.env.EMAIL_TO || 'supriyaa@iyojana.com'];
+      if (process.env.GMAIL_TO) notificationRecipients.push(process.env.GMAIL_TO);
 
-      await transport.sendMail({
-        from,
-        to: 'supriyaa@iyojana.com',
-        subject: `New Contact Form Submission - ${purpose || 'General Inquiry'}`,
-        html: `
+      const htmlMessage = `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #0F4C81;">New Contact Form Submission</h2>
             <table style="width: 100%; border-collapse: collapse;">
@@ -97,16 +75,33 @@ export const submitContactForm = createServerFn({ method: 'POST' })
               </tr>
             </table>
           </div>
-        `,
+        `;
+
+      await transport.sendMail({
+        from,
+        to: notificationRecipients.join(', '),
+        subject: `New Contact Form Submission - ${purpose || 'General Inquiry'}`,
+        html: htmlMessage,
       });
 
-      if (etherealUrl) {
-        console.log('Dev preview (Ethereal):', etherealUrl);
-      }
-
-      return { success: true, message: 'Thank you! Your message has been sent to supriyaa@iyojana.com.' };
+      return {
+        success: true,
+        message: 'Thank you! Your message has been sent. We will be in touch within one business day.',
+      };
     } catch (error) {
-      console.error('Failed to send email:', error);
-      return { success: false, message: 'Something went wrong. Please try again later.' };
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('Failed to send contact notification:', errorMessage);
+      console.error('Stack:', error instanceof Error ? error.stack : 'N/A');
+      
+      // Log environment check for debugging
+      if (!process.env.SMTP_HOST) console.error('Missing: SMTP_HOST');
+      if (!process.env.SMTP_USER) console.error('Missing: SMTP_USER');
+      if (!process.env.SMTP_PASS) console.error('Missing: SMTP_PASS');
+      if (!process.env.EMAIL_TO) console.warn('EMAIL_TO not set, using default: supriyaa@iyojana.com');
+      
+      return {
+        success: false,
+        message: 'Something went wrong while sending your message. Please try again later.',
+      };
     }
   });
