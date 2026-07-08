@@ -43,7 +43,7 @@ export function About() {
               <Target className="h-6 w-6" />
             </div>
             <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Our Mission</div>
-            <h3 className="font-display text-xl font-bold mb-3">Mission Statement</h3>
+            <h3 className="font-display text-xl font-bold mb-3">Mission</h3>
             <p className="text-muted-foreground leading-relaxed">
               Empowering investors to map, track and crack milestones through tailor made plans.
             </p>
@@ -66,7 +66,7 @@ export function About() {
               <Eye className="h-6 w-6" />
             </div>
             <div className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2">Our Vision</div>
-            <h3 className="font-display text-xl font-bold mb-3">Vision Statement</h3>
+            <h3 className="font-display text-xl font-bold mb-3">Vision</h3>
             <p className="text-muted-foreground leading-relaxed">
               To make disciplined financial planning a way of life for every individual.
             </p>
