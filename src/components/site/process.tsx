@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const steps = [
-  { n: "01", title: "Understanding your Goals and Risk Appetite" },
+  { n: "01", title: "Understand your Goals and Risk Appetite" },
   { n: "02", title: "Review your Existing Portfolio" },
   { n: "03", title: "Build a Personalised Financial Plan" },
   { n: "04", title: "Implementation of the Plan" },
