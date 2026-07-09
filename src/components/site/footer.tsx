@@ -58,15 +58,6 @@ export function Footer() {
                 <span className="text-[9px] font-semibold tracking-[0.18em] uppercase text-gradient leading-tight">Plan / Execute / Review</span>
               </div>
             </div>
-            <p className="mt-6 max-w-md text-white/60 leading-relaxed text-lg">
-              Office 11, 1st Floor, Dosti Shoppe Link, Dosti Acres, Antop Hill, Mumbai, Maharashtra 400037
-            </p>
-            <div className="mt-4 space-y-1.5 text-white/60">
-              <p>Tel: 9967571463</p>
-              <p>Email: supriyaa@iyojana.com</p>
-            </div>
-            <p className="mt-4 text-xs text-white/40">AMFI Registration Number: ARN 44645</p>
-            <p className="mt-1 text-xs text-white/40">Validity Period: 30/10/2024 to 04/01/2028</p>
 
             <div className="mt-8">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-3">Follow us</p>
