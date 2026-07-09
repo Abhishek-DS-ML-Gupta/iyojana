@@ -74,7 +74,7 @@ export function Contact() {
                   <div>
                     <div className="font-semibold mb-1">Office</div>
                     <div>Office 11, 1st Floor, Dosti Shoppe Link,</div>
-                    <div>Dosti Acres, Antop Hill, Mumbai, Maharashtra 400037</div>
+                    <div>Dosti Acres, Wadala(East), Mumbai, Maharashtra 400037</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
