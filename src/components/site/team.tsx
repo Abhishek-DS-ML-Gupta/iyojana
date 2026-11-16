@@ -1,7 +1,7 @@
+
 import { motion } from "framer-motion";
 import founderImg from "@/assets/founder.jpg";
 import analystImg from "@/assets/analyst.jpg";
-import marketImg from "@/assets/market.jpg";
 
 const team = [
   {
@@ -9,12 +9,6 @@ const team = [
     role: "Founder",
     img: founderImg,
     alt: "Supriyaa Kubal",
-  },
-  {
-    name: "Jinal Mehta",
-    role: "Marketing",
-    img: marketImg,
-    alt: "Jinal Mehta",
   },
   {
     name: "Aditya Hirve",
@@ -31,7 +25,6 @@ export function Team() {
       className="relative py-24 md:py-32 bg-mesh-light overflow-hidden"
     >
       <div className="container-x">
-        {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-flex items-center rounded-full bg-accent px-4 py-1.5 text-xs font-semibold tracking-wide text-primary uppercase">
             Meet The Team
@@ -49,8 +42,7 @@ export function Team() {
           </p>
         </div>
 
-        {/* Team Cards */}
-        <div className="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-2 max-w-3xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={member.name}
@@ -64,7 +56,6 @@ export function Team() {
               whileHover={{ y: -10 }}
               className="group rounded-3xl border border-border bg-card p-7 shadow-md transition-all duration-500 hover:shadow-2xl hover:border-primary/20"
             >
-              {/* Image */}
               <div className="mx-auto w-52 aspect-[223/366] overflow-hidden rounded-2xl bg-gray-100 shadow-lg">
                 <img
                   src={member.img}
@@ -73,17 +64,14 @@ export function Team() {
                 />
               </div>
 
-              {/* Name */}
               <h3 className="mt-6 text-center font-display text-2xl font-bold text-foreground">
                 {member.name}
               </h3>
 
-              {/* Role */}
               <p className="mt-2 text-center text-primary font-medium">
                 {member.role}
               </p>
 
-              {/* Divider */}
               <div className="mx-auto mt-5 h-1 w-16 rounded-full bg-gradient-to-r from-[#0F4C81] to-[#118AB2]" />
             </motion.div>
           ))}
