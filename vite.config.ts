@@ -8,7 +8,7 @@ import path from "node:path";
 
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
-  // Ensure process.env contains variables from .env for server functions
+  // Ensure process.env contains variables from .env for server functions in dev
   Object.assign(process.env, env);
 
   return {
@@ -17,7 +17,6 @@ export default defineConfig(({ mode, command }) => {
     },
     define: {
       "process.env.TSS_SERVER_FN_BASE": JSON.stringify("/_serverFn/"),
-      "process.env": {},
     },
     resolve: {
       alias: {
