@@ -42,7 +42,7 @@ export function Contact() {
 
     if (result.success) {
       setState("done");
-      setResponseMessage(result.message ?? 'We received your message.');
+      setResponseMessage(result.message ?? 'Email Sent Successfully.');
     } else {
       setState("idle");
       setResponseMessage(result.message ?? 'Something went wrong.');
