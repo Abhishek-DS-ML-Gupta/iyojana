@@ -130,7 +130,7 @@ export function Contact() {
                   >
                     <CheckCircle2 className="h-8 w-8" />
                   </motion.span>
-                  <h3 className="mt-6 font-display text-2xl font-bold">Message received.</h3>
+                  <h3 className="mt-6 font-display text-2xl font-bold">Email Sent Successfully.</h3>
                   <p className="mt-2 text-white/70">We will be in touch within one business day.</p>
                 </motion.div>
               ) : (
